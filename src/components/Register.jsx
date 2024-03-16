@@ -17,10 +17,6 @@ let registerSchema = yup.object({
 });
 
 export const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const [dataRegister, setDataRegister] = useState({});
 
   const {
@@ -35,16 +31,17 @@ export const Register = () => {
 
   const handleRegister = (data) => {
     const postUser = axios.post(urlApi, data);
-    postUser.then((data) => setDataRegister(data.data));
-    postUser.catch((error) => console.log(error));
-    localStorage.setItem("dataRegister", JSON.stringify(dataRegister));
+    postUser
+      .then((data) => setDataRegister(data.data))
+      .catch((error) => console.log(error));
 
     reset();
   };
+  localStorage.setItem("dataRegister", JSON.stringify(dataRegister));
 
   return (
-    <div class="register-container">
-      <div class="title-container">
+    <div className="register-container">
+      <div className="title-container">
         <h1>CIT EDU SHOP</h1>
         <p>Học lập trình cùng CIT Education</p>
         <button>
@@ -52,32 +49,32 @@ export const Register = () => {
         </button>
       </div>
 
-      <div class="form-container">
+      <div className="form-container">
         <form onSubmit={handleSubmit(handleRegister)}>
           <h1>Create Account</h1>
-          <div class="social-container">
-            <a href="#" class="social">
+          <div className="social-container">
+            <a href="#" className="social">
               <FaFacebook />
             </a>
-            <a href="#" class="social">
+            <a href="#" className="social">
               <FaGooglePlusG />
             </a>
-            <a href="#" class="social">
+            <a href="#" className="social">
               <FaLinkedin />
             </a>
           </div>
           <span>or use your email for registration</span>
           <input type="text" placeholder="Name" {...register("name")} />
-          <span className="error_message">{errors.name?.message}</span>
+          <span classNameName="error_message">{errors.name?.message}</span>
           <input type="email" placeholder="Email" {...register("email")} />
-          <span className="error_message">{errors.email?.message}</span>
+          <span classNameName="error_message">{errors.email?.message}</span>
 
           <input
             type="password"
             placeholder="Password"
             {...register("password")}
           />
-          <span className="error_message">{errors.password?.message}</span>
+          <span classNameName="error_message">{errors.password?.message}</span>
 
           <p>
             ALREADY HAVE AN ACCOUNT ? <a href="./login.html">lOGIN NOW</a>
