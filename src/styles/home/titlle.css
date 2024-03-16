@@ -1,0 +1,28 @@
+.titlle-container {
+  padding-inline: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.titlle-name {
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.view-more {
+  color: #000;
+  text-decoration: underline;
+}
+
+@media (max-width: 1220px) {
+  .titlle-container {
+    padding-inline: 30px;
+  }
+}
+
+@media (max-width: 990px) {
+  .titlle-container {
+    padding-inline: 15px;
+  }
+}

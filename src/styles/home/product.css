@@ -1,0 +1,139 @@
+.all_product {
+  padding-inline: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.items_product {
+  padding: 15px;
+  max-width: calc((100% - 120px) / 5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 470px;
+}
+
+.img_product {
+  max-width: 301px;
+  height: 350px;
+}
+
+.img_product img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.product_content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name_product {
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.product_desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* @media */
+@media (max-width: 1400px) {
+  .items_product {
+    height: 360px;
+  }
+
+  .img_product {
+    max-width: 200px;
+    height: 250px;
+  }
+
+  .img_product img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1220px) {
+  .all_product {
+    padding-inline: 30px;
+  }
+
+  .items_product {
+    max-width: calc((100% - 90px) / 4);
+  }
+
+  .img_product {
+    max-width: 235px;
+    height: 310px;
+  }
+
+  .img_product img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1143px) {
+  .items_product {
+    height: 400px;
+  }
+
+  .img_product {
+    max-width: 210px;
+    height: 285px;
+  }
+
+  .img_product img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1143px) {
+  .img_product {
+    max-width: 200px;
+    height: 285px;
+  }
+
+  .img_product img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 990px) {
+  .all_product {
+    padding-inline: 15px;
+  }
+
+  .items_product {
+    max-width: calc((100% - 60px) / 3);
+    height: 360px;
+  }
+
+  .img_product {
+    max-width: 250px;
+    height: 250px;
+  }
+
+  .img_product img {
+    width: 100%;
+    height: 100%;
+  }
+}
