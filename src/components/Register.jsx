@@ -8,6 +8,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
 const urlApi = "https://648478f7ee799e321626ba3d.mockapi.io/api/v1/register";
 
 let registerSchema = yup.object({
@@ -18,6 +22,7 @@ let registerSchema = yup.object({
 
 export const Register = () => {
   const [dataRegister, setDataRegister] = useState({});
+  const navigate = useNavigate();
 
   const {
     register,
@@ -36,6 +41,21 @@ export const Register = () => {
       .catch((error) => console.log(error));
 
     reset();
+
+    toast.success("Đăng kí thành công", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
   };
   localStorage.setItem("dataRegister", JSON.stringify(dataRegister));
 
@@ -45,7 +65,7 @@ export const Register = () => {
         <h1>CIT EDU SHOP</h1>
         <p>Học lập trình cùng CIT Education</p>
         <button>
-          <a href="./login.html">Login</a>
+          <a onClick={() => navigate("/login")}>Login</a>
         </button>
       </div>
 
@@ -65,23 +85,48 @@ export const Register = () => {
           </div>
           <span>or use your email for registration</span>
           <input type="text" placeholder="Name" {...register("name")} />
-          <span classNameName="error_message">{errors.name?.message}</span>
+          <span className="error_message">{errors.name?.message}</span>
           <input type="email" placeholder="Email" {...register("email")} />
-          <span classNameName="error_message">{errors.email?.message}</span>
+          <span className="error_message">{errors.email?.message}</span>
 
           <input
             type="password"
             placeholder="Password"
             {...register("password")}
           />
-          <span classNameName="error_message">{errors.password?.message}</span>
+          <span className="error_message">{errors.password?.message}</span>
 
-          <p>
-            ALREADY HAVE AN ACCOUNT ? <a href="./login.html">lOGIN NOW</a>
-          </p>
+          <span className="enter_login">
+            ALREADY HAVE AN ACCOUNT ?{" "}
+            <a onClick={() => navigate("/login")}>LOGIN NOW</a>
+          </span>
           <button>Register</button>
         </form>
       </div>
+
+      {/* 
+
+1 hàm : 
+ dataLogin = {name ,pass}
+local = {name ,pass , id ,email} 
+so sánh name của data = name của local 
+so sánh pass của data = pass của local 
+ if thoả mản => toast and navigate(/home)
+ else => toast error
+
+*/}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

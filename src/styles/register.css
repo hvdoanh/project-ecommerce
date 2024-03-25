@@ -93,6 +93,7 @@
   background-color: transparent;
   border-color: #1f409a;
   border-width: 2px;
+  cursor: pointer;
 }
 
 .title-container button:hover {
@@ -152,6 +153,13 @@
 
 .error_message {
   color: red;
+}
+
+.enter_login {
+  cursor: pointer;
+}
+.enter_login a {
+  margin-left: 15px;
 }
 
 /* Responsive  */
