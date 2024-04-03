@@ -88,7 +88,7 @@
   align-items: center;
   border-radius: 100px;
   position: absolute;
-  right: -4px;
+  right: 5px;
   bottom: -1px;
   width: 15px;
   height: 15px;
@@ -97,11 +97,94 @@
   font-size: 10px;
   font-weight: 700;
 }
+
+.user-name {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.logout {
+  position: absolute;
+  top: 50px;
+  right: -30px;
+  background-color: #231f20;
+  z-index: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.logout button {
+  background-color: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  font-family: "Roboto", sans-serif;
+}
+.logout button:hover {
+  color: #87a4e0;
+  cursor: pointer;
+}
+
+.right,
+.left {
+  display: flex;
+  align-items: flex-end;
+}
+
+.item_logout {
+  cursor: pointer;
+  display: flex;
+}
+
+.item_logout:hover {
+  color: #87a4e0;
+}
+
+.icon_shopping {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon_shopping:hover {
+  color: #87a4e0;
+}
+
+.icon_shopping .cart_img svg:hover {
+  color: #87a4e0;
+}
+.cart_title {
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+
 /* media */
+
+@media (max-width: 1590px) {
+  .logout button {
+    font-size: 14px;
+  }
+  .icon_shopping svg {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .logout button {
+    font-size: 13px;
+  }
+}
 
 @media (max-width: 1490px) {
   .header-container {
     padding-inline: 30px;
+  }
+  .logo_header {
+    display: none;
   }
 }
 
@@ -116,11 +199,17 @@
   .header_inner {
     gap: 15px;
   }
+  .cart_title {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1390px) {
   .search-input input {
     width: 100px;
+  }
+  .user-name {
+    font-size: 16px;
   }
 }
 
@@ -166,16 +255,9 @@
   .header_inner {
     gap: 7px;
   }
-  .logo_header img {
-    display: none;
-  }
 }
 
 @media (max-width: 1220px) {
-  .logo_header img {
-    display: none;
-  }
-
   .menu_header .nav-sub .nav-sub-item {
     padding: 29px 14px;
   }
@@ -192,6 +274,10 @@
     width: 0px;
     margin-left: 0px;
   }
+
+  .menu_header .nav-sub .nav-sub-item a {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1168px) {
@@ -205,6 +291,10 @@
 
   .search-input input {
     width: 0px;
+  }
+
+  .logout button {
+    font-size: 10px;
   }
 }
 
@@ -225,6 +315,10 @@
     font-size: 22px;
   }
 
+  .logo_header {
+    display: block;
+  }
+
   .logo_header img {
     width: 61px;
     height: 40px;
@@ -242,5 +336,8 @@
     flex: 1;
     justify-content: flex-end;
     gap: 20px;
+  }
+  .cart_title {
+    font-size: 10px;
   }
 }

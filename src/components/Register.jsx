@@ -104,17 +104,6 @@ export const Register = () => {
         </form>
       </div>
 
-      {/* 
-
-1 hàm : 
- dataLogin = {name ,pass}
-local = {name ,pass , id ,email} 
-so sánh name của data = name của local 
-so sánh pass của data = pass của local 
- if thoả mản => toast and navigate(/home)
- else => toast error
-
-*/}
       <ToastContainer
         position="top-right"
         autoClose={5000}

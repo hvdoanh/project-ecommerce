@@ -1,0 +1,103 @@
+.conatiner-form {
+  display: flex;
+  justify-content: center;
+}
+.all_form {
+  background-color: #5376c2;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 768px;
+  max-width: 100%;
+  min-height: 320px;
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form_text {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form_text .box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: calc(50% - 10px);
+}
+
+.form_text .box:first-child {
+  width: 100%;
+}
+
+.form_text .box .label_info {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.form_text .box .input_info {
+  border-radius: 5px;
+  border: none;
+  padding: 6px 10px;
+  background-color: #f6f7f6;
+  outline: none;
+}
+.form_text .box .input_info,
+.form_text .box .input_info::placeholder,
+.form_text .box .input_info option {
+  font-size: 18px;
+}
+
+.gui {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.gui button {
+  padding: 6px 10px;
+  width: 400px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.gui button:hover {
+  background-color: rgb(27, 75, 165);
+  color: #fff;
+}
+
+/* media */
+
+@media (max-width: 785px) {
+  .conatiner-form {
+    padding-inline: 15px;
+  }
+}
+
+@media (max-width: 745px) {
+  .all_form {
+    max-width: 100%;
+  }
+  .form_text .box {
+    width: 100%;
+  }
+
+  .form_text .box .label_info {
+    font-size: 16px;
+  }
+  .form_text .box .input_info,
+  .form_text .box .input_info::placeholder,
+  .form_text .box .input_info option {
+    font-size: 14px;
+  }
+
+  .gui button {
+    width: 200px;
+  }
+}
