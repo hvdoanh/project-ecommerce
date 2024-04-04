@@ -73,4 +73,7 @@
     display: flex;
     gap: 15px;
   }
+  .slick-slide .banner-img {
+    height: 130px;
+  }
 }

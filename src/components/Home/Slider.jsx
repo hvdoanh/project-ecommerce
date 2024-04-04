@@ -13,10 +13,9 @@ const SliderMain = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
-    // speed: 2000,
-    // autoplaySpeed: 2000,
-    // cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 700,
+    cssEase: "linear",
     arrows: false,
   };
 

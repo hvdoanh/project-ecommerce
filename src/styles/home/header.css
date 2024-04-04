@@ -340,4 +340,8 @@
   .cart_title {
     font-size: 10px;
   }
+  .logout {
+    top: 34px;
+    right: -15px;
+  }
 }

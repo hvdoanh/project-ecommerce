@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../../styles/home/form.css";
+import anh6 from "../../assets/images/anh6.jpg";
 
 function Form() {
   const { register, handleSubmit } = useForm();
@@ -44,69 +45,25 @@ function Form() {
 
   return (
     <div className="conatiner-form">
+      <div className="img_form">
+        <img src={anh6} alt="img_form" />
+      </div>
+
       <form onSubmit={handleSubmit(handleFormEmail)} className="all_form">
+        <div className="title_form">Đăng ký nhận bản tin</div>
+        <p className="desc_form">
+          Đừng bỏ lỡ hàng ngàn sản phẩm và chương trình siêu hấp dẫn
+        </p>
         <div className="form_text">
           <div className="box">
-            <label htmlFor="name" className="label_info">
-              Họ Tên
-            </label>
-            <input
-              type="text"
-              id="name"
-              {...register("name")}
-              placeholder="Tên bạn là gì?"
-              className="input_info"
-            />
-          </div>
-
-          <div className="box">
-            <label htmlFor="phone" className="label_info">
-              Số điện thoại
-            </label>
-            <input
-              type="text"
-              id="phone"
-              {...register("phone")}
-              placeholder="Mời nhập số điện thoại"
-              className="input_info"
-            />
-          </div>
-
-          <div className="box">
-            <label htmlFor="email" className="label_info">
-              Email
-            </label>
             <input
               type="text"
               id="email"
               {...register("email")}
-              placeholder="Email của bạn"
+              placeholder="Nhập email của bạn"
               className="input_info"
+              data-validate="{required:true, 'validate-email':true,equalTo:'#email'}"
             />
-          </div>
-
-          <div className="box">
-            <label htmlFor="doituong" className="label_info">
-              Bạn Là
-            </label>
-            <select
-              {...register("doituong")}
-              className="input_info"
-              id="doituong"
-            >
-              <option value="0">Chọn đối tượng</option>
-              <option value="hocsinh">Học sinh C2, C3</option>
-              <option value="sinhvien">Sinh Viên Năm 3</option>
-            </select>
-          </div>
-
-          <div className="box">
-            <label className="label_info">Mục Tiêu Của Bạn</label>
-            <select {...register("target")} className="input_info">
-              <option value="0">Chọn mục tiêu học tập của bạn</option>
-              <option value="tts">Thực tập</option>
-              <option value="dilam">Đi làm luôn</option>
-            </select>
           </div>
         </div>
 
