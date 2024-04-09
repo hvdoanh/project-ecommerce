@@ -42,10 +42,10 @@ const Header = () => {
       <div className="menu_header">
         <ul className="nav-sub">
           <li className="nav-sub-item">
-            <Link href="#">Sale</Link>
+            <Link to="/">Sale</Link>
           </li>
           <li className="nav-sub-item">
-            <Link href="#">Sản phẩm</Link>
+            <Link to="/sanpham">Sản phẩm</Link>
           </li>
           <li className="nav-sub-item">
             <Link href="#">Đồ lót</Link>

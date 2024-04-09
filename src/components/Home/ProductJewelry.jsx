@@ -73,7 +73,9 @@ export const ProductJewelry = () => {
 
   console.log(data);
   useEffect(() => {
-    const urlApi = axios.get("https://fakestoreapi.com/products");
+    const urlApi = axios.get(
+      "https://fakestoreapi.com/products/category/jewelery"
+    );
     urlApi
       .then((reponsive) => {
         setData(reponsive.data);
@@ -93,6 +95,17 @@ export const ProductJewelry = () => {
               data.map((product) => {
                 return (
                   <div className="items_product" key={product.id}>
+                    <div className="vote_star_quantity_icon">
+                      <div className="vote_star_quantity">
+                        <p className="vote_star">
+                          {product.rating.rate} <IoIosStar className="star" />
+                        </p>
+                        <p className="vote_quantity">
+                          ({product.rating.count})
+                        </p>
+                      </div>
+                      <span className="icon_new">New</span>
+                    </div>
                     <div className="img_product">
                       <img src={product.image} alt="icon" />
                     </div>
@@ -100,13 +113,6 @@ export const ProductJewelry = () => {
                       <h1 className="name_product">{product.title}</h1>
                       <p className="product_desc">Giá: {product.price}$</p>
                     </div>
-                    <div className="vote">
-                      <p className="vote_star">
-                        {product.rating.rate} <IoIosStar className="star" />
-                      </p>
-                      <p className="quantity">({product.rating.count})</p>
-                    </div>
-                    <span className="icon_new">New</span>
                   </div>
                 );
               })}

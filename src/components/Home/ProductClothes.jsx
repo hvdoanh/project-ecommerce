@@ -8,6 +8,7 @@ import { IoIosStar } from "react-icons/io";
 import "../../styles/home/product.css";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -62,11 +63,12 @@ const settings = {
   prevArrow: <SamplePrevArrow />,
 };
 
-export const ProductClothes = () => {
+export const ProductClothes = ({ setId }) => {
   const [data, setData] = useState([]);
   AOS.init();
 
-  console.log(data);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const urlApi = axios.get("https://fakestoreapi.com/products");
     urlApi
@@ -78,6 +80,12 @@ export const ProductClothes = () => {
       });
   }, []);
 
+  const handleProductDetails = (idProduct) => {
+    console.log("idProduct", idProduct);
+    setId(idProduct);
+    navigate(`products/${idProduct}`);
+  };
+
   return (
     <div style={{ marginBottom: "30px" }} data-aos="fade-up-right">
       <h1 className="title">Sản Phẩm Quần Áo</h1>
@@ -86,7 +94,20 @@ export const ProductClothes = () => {
           {data &&
             data.map((product) => {
               return (
-                <div className="items_product" key={product.id}>
+                <div
+                  className="items_product"
+                  onClick={() => handleProductDetails(product.id)}
+                  key={product.id}
+                >
+                  <div className="vote_star_quantity_icon">
+                    <div className="vote_star_quantity">
+                      <p className="vote_star">
+                        {product.rating.rate} <IoIosStar className="star" />
+                      </p>
+                      <p className="vote_quantity">({product.rating.count})</p>
+                    </div>
+                    <span className="icon_new">New</span>
+                  </div>
                   <div className="img_product">
                     <img src={product.image} alt="icon" />
                   </div>
@@ -94,13 +115,6 @@ export const ProductClothes = () => {
                     <h1 className="name_product">{product.title}</h1>
                     <p className="product_desc">Giá: {product.price}$</p>
                   </div>
-                  <div className="vote">
-                    <p className="vote_star">
-                      {product.rating.rate} <IoIosStar className="star" />
-                    </p>
-                    <p className="quantity">({product.rating.count})</p>
-                  </div>
-                  <span className="icon_new">New</span>
                 </div>
               );
             })}

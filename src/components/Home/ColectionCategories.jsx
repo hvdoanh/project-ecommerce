@@ -77,7 +77,7 @@ function ColectionCategories() {
 
   useEffect(() => {
     const handleGetProducts = axios.get(
-      "https://fakestoreapi.com/products/category/jewelery"
+      "https://fakestoreapi.com/products/category/electronics"
     );
     handleGetProducts.then((data) => {
       setDataProduct(data.data);
@@ -111,6 +111,7 @@ function ColectionCategories() {
         <Slider {...settings}>
           {dataProduct.map((product) => {
             return (
+
               <div className="items_product" key={product.id}>
                 <div className="img_product">
                   <img src={product.image} alt="icon" />
