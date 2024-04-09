@@ -34,8 +34,13 @@
 
 .form_text .box {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   width: calc(50% - 10px);
+}
+.error_form {
+  font-size: 14px;
+  color: #f54646;
 }
 
 .form_text .box:first-child {

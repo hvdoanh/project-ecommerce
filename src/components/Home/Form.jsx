@@ -7,7 +7,11 @@ import "../../styles/home/form.css";
 import anh6 from "../../assets/images/anh6.jpg";
 
 function Form() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleFormEmail = (data) => {
     const dataEmail = {
@@ -59,11 +63,25 @@ function Form() {
             <input
               type="text"
               id="email"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is required",
+                },
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Email invalidate",
+                },
+              })}
               placeholder="Nhập email của bạn"
               className="input_info"
-              data-validate="{required:true, 'validate-email':true,equalTo:'#email'}"
             />
+            {errors?.email ? (
+              <p className="error_form">{errors?.email?.message}</p>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 

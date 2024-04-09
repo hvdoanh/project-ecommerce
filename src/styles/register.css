@@ -153,6 +153,8 @@
 
 .error_message {
   color: red;
+  width: 100%;
+  text-align: start;
 }
 
 .enter_login {

@@ -7,18 +7,17 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const urlApi = "https://648478f7ee799e321626ba3d.mockapi.io/api/v1/register";
 
-let registerSchema = yup.object({
-  name: yup.string().required().min(6),
-  email: yup.string().email().required(),
-  password: yup.string().required().min(6),
-});
+// let registerSchema = yup.object({
+//   name: yup.string().required().min(6),
+//   email: yup.string().email().required(),
+//   password: yup.string().required().min(6),
+// });
 
 export const Register = () => {
   const [dataRegister, setDataRegister] = useState({});
@@ -30,8 +29,8 @@ export const Register = () => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(registerSchema),
+    // mode: "onChange",
+    // resolver: yupResolver(registerSchema),
   });
 
   const handleRegister = (data) => {
@@ -65,7 +64,7 @@ export const Register = () => {
         <h1>CIT EDU SHOP</h1>
         <p>Học lập trình cùng CIT Education</p>
         <button>
-          <a onClick={() => navigate("/login")}>Login</a>
+          <Link to={"/login"}>Login</Link>
         </button>
       </div>
 
@@ -73,32 +72,67 @@ export const Register = () => {
         <form onSubmit={handleSubmit(handleRegister)}>
           <h1>Create Account</h1>
           <div className="social-container">
-            <a href="#" className="social">
+            <Link to="#" className="social">
               <FaFacebook />
-            </a>
-            <a href="#" className="social">
+            </Link>
+            <Link to="#" className="social">
               <FaGooglePlusG />
-            </a>
-            <a href="#" className="social">
+            </Link>
+            <Link to="#" className="social">
               <FaLinkedin />
-            </a>
+            </Link>
           </div>
           <span>or use your email for registration</span>
-          <input type="text" placeholder="Name" {...register("name")} />
+          <input
+            type="text"
+            placeholder="Name"
+            {...register("name", {
+              required: {
+                value: true,
+                message: "Name required",
+              },
+              minLength: {
+                value: 5,
+                message: "You must enter at least 5 characters",
+              },
+            })}
+          />
           <span className="error_message">{errors.name?.message}</span>
-          <input type="email" placeholder="Email" {...register("email")} />
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email", {
+              required: {
+                value: true,
+                message: "Email is required",
+              },
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: "Email invalidate",
+              },
+            })}
+          />
           <span className="error_message">{errors.email?.message}</span>
 
           <input
             type="password"
             placeholder="Password"
-            {...register("password")}
+            {...register("password", {
+              required: {
+                value: true,
+                message: "Password required",
+              },
+              minLength: {
+                value: 6,
+                message: "You must enter at least 6 characters",
+              },
+            })}
           />
           <span className="error_message">{errors.password?.message}</span>
 
           <span className="enter_login">
-            ALREADY HAVE AN ACCOUNT ?{" "}
-            <a onClick={() => navigate("/login")}>LOGIN NOW</a>
+            ALREADY HAVE AN ACCOUNT ? <Link to={"/login"}>LOGIN NOW</Link>
           </span>
           <button>Register</button>
         </form>

@@ -5,8 +5,6 @@ import "../styles/productDetails.css";
 import { FiShoppingCart } from "react-icons/fi";
 
 function ProductDetails({ id }) {
-  console.log("iddetails", id);
-
   const [data, setData] = useState({});
 
   useEffect(() => {
